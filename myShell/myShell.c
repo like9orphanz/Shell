@@ -13,14 +13,24 @@
 /*
  * 
  */
-int main(void)
-{
-  Param_t *params = new_paramt();
-  if(params == NULL)
-  {
-   fprintf(stdout, "Memory allocation failed\n");
-   exit(EXIT_FAILURE);
+int main() {
+	int i;
+	Param_t *paramsP;
+	Param_t params = {NULL, NULL, 0, 0};
 
-    return (EXIT_SUCCESS);
+	for (i = 0 ; i < MAXARGS ; i++) {
+		params.argumentVector[i] = NULL;
+	}
+
+  	paramsP = &params;
+
+  	if(paramsP == NULL) {
+  		fprintf(stdout, "Memory allocation failed\n");
+  		exit(EXIT_FAILURE);
+  	}
+
+  	run_loop(paramsP);
+
+	return (EXIT_SUCCESS);
 }
 
