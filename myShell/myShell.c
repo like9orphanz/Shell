@@ -13,7 +13,13 @@
 /*
  * 
  */
-int main(int argc, char** argv) {
+int main(void)
+{
+  Param_t *params = new_paramt();
+  if(params == NULL)
+  {
+   fprintf(stdout, "Memory allocation failed\n");
+   exit(EXIT_FAILURE);
 
     return (EXIT_SUCCESS);
 }
