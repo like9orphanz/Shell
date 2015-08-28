@@ -11,7 +11,9 @@
 
 /* don’t test program with more than this many tokens for input */
 #define MAXARGS 32
-#define CMD_LEN 2048
+#define Buff 1024
+#define tok_Bufsize 64
+
 /* structure to hold input data */
 struct PARAM
 {
@@ -24,11 +26,14 @@ struct PARAM
 /* a typedef so we don’t need to use "struct PARAM" all the time */
 typedef struct PARAM Param_t;
 
-char **format_args(char command[CMD_LEN], Param_t *params);
+void run_loop(void);
 
-Param_t *new_paramt(void);
+char read_line(void;
+
+char **split_line(char *line Param_t *params);
 
 void printParams(Param_t *param);
+
 
 #endif	/* PARSE_H */
 
