@@ -26,11 +26,11 @@ struct PARAM
 /* a typedef so we don’t need to use "struct PARAM" all the time */
 typedef struct PARAM Param_t;
 
-void run_loop(void);
+void run_loop(Param_t *);
 
-char read_line(void;
+char *read_line(void);
 
-char **split_line(char *line Param_t *params);
+char **split_line(char *line, Param_t *params);
 
 void printParams(Param_t *param);
 
