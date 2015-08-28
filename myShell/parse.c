@@ -16,7 +16,7 @@ Param_t *new_paramt(void)
     int i;
     for(i=0; i < MAXARGS; i++)
     {
-        new_paramt->argumentVector[i] = (char *) malloc(sizeof(char) * Buff);
+        new_paramt->argumentVector[i] = (char *) malloc(sizeof(char * Buff));
         return ((new_paramt != NULL)? new_paramt:NULL);
     }   
 }
@@ -103,6 +103,7 @@ char **split_line(char *line Param_t *params)
   token = strtok(line, " \t\r\n\a");
   while(token != NULL)
   {
+   //gonna need to strcpy
    tokens[position] = token;
    position++;
 
