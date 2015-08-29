@@ -1,8 +1,8 @@
 /* 
- * File:   main.c
- * Author: Joshua
- *
+ * File:   myShell.c
  * Created on August 26, 2015, 9:26 PM
+ * Authors: Joshua			
+ *		    Sam
  */
 
 #include <stdio.h>
@@ -14,22 +14,22 @@
  * 
  */
 int main() {
+	// Variables
 	int i;
+	char *inStr;
+
+	// Structs
 	Param_t *paramsP;
+	
+	// Initialize struct
 	Param_t params = {NULL, NULL, 0, 0};
-
-	for (i = 0 ; i < MAXARGS ; i++) {
-		params.argumentVector[i] = NULL;
-	}
-
+	for (i = 0 ; i < MAXARGS ; i++) params.argumentVector[i] = NULL;
   	paramsP = &params;
 
-  	if(paramsP == NULL) {
-  		fprintf(stdout, "Memory allocation failed\n");
-  		exit(EXIT_FAILURE);
-  	}
-
-  	run_loop(paramsP);
+ 	// Read parse and assign user input to struct
+  	inStr = readLine();
+  	parseStr(inStr, paramsP);
+  	printParams(paramsP);
 
 	return (EXIT_SUCCESS);
 }
