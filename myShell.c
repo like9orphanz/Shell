@@ -13,33 +13,41 @@
 /*
  * 
  */
-int main() {
+int main(int argc, char *argv[]) {
 
-        
+	while(argc != 2)
+	{
+		fprintf(stdout, "USAGE: ./myShell [-Debug]\n");
+		return 1;
+	}        
+
 	// Variables
 	int i;
 	char *inStr;
 
 	// Structs
 	Param_t *paramsP;
-        
-        
+	
 	// Initialize struct
 	Param_t params = {NULL, NULL, 0, 0};
 	for (i = 0 ; i < MAXARGS ; i++) params.argumentVector[i] = NULL;
   	paramsP = &params;
         
-        do{
+	
  	// Read parse and assign user input to struct
+
+	do
+	{
         printf("$$$ ");
 	
   	inStr = readLine();
-  	parseStr(inStr, paramsP);
-
-       if(strcmp(inStr,"-Debug\n") == 0){
-               printParams(paramsP);
-       }
-
-        }while(strcmp(inStr,"exit\n"));
- 	 return (EXIT_SUCCESS);
+	parseStr(inStr, paramsP); 
+	  
+	if(strcmp(inStr, "-Debug\n") == 0){
+	     printParams(paramsP);
+	 }
+               	
+        } while(strcmp(inStr,"exit\n"));
+ 	
+return (0); 
 }
