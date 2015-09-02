@@ -14,12 +14,7 @@
  * 
  */
 int main(int argc, char *argv[]) {
-
-	while(argc != 2)
-	{
-		fprintf(stdout, "USAGE: ./myShell [-Debug]\n");
-		return 1;
-	}        
+        
 
 	// Variables
 	int i;
@@ -43,11 +38,12 @@ int main(int argc, char *argv[]) {
   	inStr = readLine();
 	parseStr(inStr, paramsP); 
 	  
-	if(strcmp(inStr, "-Debug\n") == 0){
+	if(argc == 2 && (strcasecmp(inStr, "exit\n"))) 
+	{
 	     printParams(paramsP);
-	 }
+	}
                	
-        } while(strcmp(inStr,"exit\n"));
+        } while(strcasecmp(inStr,"exit\n"));
  	
 return (0); 
 }
