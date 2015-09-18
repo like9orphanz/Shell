@@ -8,18 +8,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "unistd.h"
+#include <sys/wait.h>
 #include "parse.h"
 
 /*
  * 
  */
-int main(int argc, char *argv[]) {
-        
+int main(int argc, char *argv[])
+{
+       //*************************************************when not in back ground mode do not let commands be saved into the argv********NO USER INPUT********** 
 
 	// Variables
 	int i;
 	char *inStr;
-
+	
+	do
+	{
 	// Structs
 	Param_t *paramsP;
 	
@@ -31,19 +36,19 @@ int main(int argc, char *argv[]) {
 	
  	// Read parse and assign user input to struct
 
-	do
-	{
-        printf("$$$ ");
+	
+	
+        printf("---> ");
 	
   	inStr = readLine();
-	parseStr(inStr, paramsP); 
-	  
-	if(argc == 2 && (strcasecmp(inStr, "exit\n"))) 
-	{
-	     printParams(paramsP);
-	}
-               	
-        } while(strcasecmp(inStr,"exit\n"));
+ 	parseStr(inStr, paramsP);   
+	launch(paramsP);
+        if(argc == 2 && strcasecmp(inStr, "-Debug"))
+		printParams(paramsP);      	
+        }while(strcasecmp(inStr, "exit"));
+	
  	
+
+
 return (0); 
 }
