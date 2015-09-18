@@ -45,7 +45,7 @@ void parseStr(char *str, Param_t *param) {
 
         token = strtok(str,delimiter);
         if (token[0] == '\n') {
-        	printf("Re enter string\n");
+        	printf("---> ");
         	str = readLine();
         	parseStr(str, param);
         	return;
